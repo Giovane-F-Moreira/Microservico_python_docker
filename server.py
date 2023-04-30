@@ -1,11 +1,11 @@
 from flask import Flask
 from flask import jsonify
 
-servico = Flask(__name__)
+service = Flask(__name__)
 
 # "constants"
 IS_ALIVE = "yes"
-VERSION = "0.0.1"
+VERSION = "0.0.2"
 AUTHOR = "Giovane Fernandes Moreira"
 EMAIL = "giovane.fern.m@gmail.com"
 
@@ -119,12 +119,12 @@ TIME_INFO = [
 
 
 #This route return infomation about the service 
-@servico.route("/isalive/")
+@service.route("/isalive/")
 def is_alive():
     return IS_ALIVE
 
 # This route return infomation about the development
-@servico.route("/info/")
+@service.route("/info/")
 def get_info():
     info = jsonify(
         version = VERSION,
@@ -135,7 +135,7 @@ def get_info():
     return info
 
 # This route return infomation about circuit in moto GP 2023 event
-@servico.route("/circuit_info/")
+@service.route("/circuit_info/")
 def get_circuit_info():
     circuit = jsonify(
         CIRCUIT_INF
@@ -145,7 +145,7 @@ def get_circuit_info():
 
 
 # This route return infomation about climete in moto GP 2023 event
-@servico.route("/climate_info/")
+@service.route("/climate_info/")
 def get_climate_info():
     climate = jsonify(
         CLIMATE_INFO
@@ -154,7 +154,7 @@ def get_climate_info():
     return climate
 
 # This route return infomation about time and moto GP 2023 event
-@servico.route("/time_info/")
+@service.route("/time_info/")
 def get_time_info():
     time = jsonify(
         TIME_INFO
@@ -163,7 +163,7 @@ def get_time_info():
     return time
 
 if __name__ == "__main__":
-    servico.run(
+    service.run(
         host = "127.0.0.1",
         debug=True
     )
