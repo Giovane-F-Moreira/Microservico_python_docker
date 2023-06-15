@@ -4,8 +4,8 @@ import pandas as pd
 # rotas do servico de noticias
 URL_SERVICO = "http://127.0.0.1:5000/"
 IS_ALIVE = URL_SERVICO + "isalive/"
-JOGATINA = URL_SERVICO + "jogatina/"
-SISTEMAS = URL_SERVICO + "sistemas/"
+CIRCUIT = URL_SERVICO + "circuit_info/"
+CLIMATE = URL_SERVICO + "climate_info/"
 
 def acessar(url):
     print("acessando a url:", url)
@@ -23,14 +23,14 @@ def is_alive():
 
     return alive
 
-def get_jogatina():
-    data = acessar(JOGATINA)
+def get_circuit_info():
+    data = acessar(CIRCUIT)
     noticias = json.loads(data)
 
     return noticias
 
-def get_sistemas():
-    data = acessar(SISTEMAS)
+def get_climate_info():
+    data = acessar(CLIMATE)
     noticias = json.loads(data)
 
     return noticias
@@ -48,13 +48,13 @@ if __name__ == "__main__":
         if alive:
             print("servico está respondendo. Acessando notícias...")
             # acessa as noticias sobre jogos eletronicos
-            noticias = get_jogatina()
+            noticias = get_circuit_info()
             # print("noticias sobre jogos eletronicos:", noticias)
             # imprime as noticias
             imprimir_noticias(noticias)
 
             # acessa as noticias sobre sistemas operacionais
-            noticias = get_sistemas()
+            noticias = get_climate_info()
             # print("noticias sobre sistemas:", noticias)
             # imprime as noticias
             imprimir_noticias(noticias)
