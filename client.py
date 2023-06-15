@@ -6,6 +6,7 @@ URL_SERVICO = "http://127.0.0.1:5000/"
 IS_ALIVE = URL_SERVICO + "isalive/"
 CIRCUIT = URL_SERVICO + "circuit_info/"
 CLIMATE = URL_SERVICO + "climate_info/"
+TIME = URL_SERVICO + "time_info/"
 
 def acessar(url):
     print("acessando a url:", url)
@@ -35,6 +36,12 @@ def get_climate_info():
 
     return noticias
 
+def get_time_info():
+    data = acessar(TIME)
+    noticias = json.loads(data)
+
+    return noticias
+
 def imprimir_noticias(noticias):
     frame = pd.DataFrame(noticias)
     print(frame.T)
@@ -55,6 +62,11 @@ if __name__ == "__main__":
 
             # acessa as noticias sobre sistemas operacionais
             noticias = get_climate_info()
+            # print("noticias sobre sistemas:", noticias)
+            # imprime as noticias
+            imprimir_noticias(noticias)
+            
+            noticias = get_time_info()
             # print("noticias sobre sistemas:", noticias)
             # imprime as noticias
             imprimir_noticias(noticias)
